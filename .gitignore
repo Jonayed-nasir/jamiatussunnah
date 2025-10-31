@@ -20,8 +20,7 @@ django_models
 *.log
 *.pot
 *.pyc
-*.sqlite3
-*.db
+
 
 # Media/Static
 static/
