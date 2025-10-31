@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-+*)(6_ydf#*cgi2v)@!ne#r+mi%^_6p^+sw6ns^)d_$3!*nkk8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['jamiatussunnah.onrender.com']
 
 
 # Application definition
@@ -57,11 +57,12 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
+        'jamiatussunnah.onrender.com,'
         "http://localhost:3000",
         "http://localhost:8000",
         'http://127.0.0.1:8000',
         'http://127.0.0.1:3000',
-        'jamiatussunnah.onrender.com'
+        
 
         
     ]
