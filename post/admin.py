@@ -5,4 +5,4 @@ from .models import NoticePost
 
 @admin.register(NoticePost)
 class NoticePostAdmin(admin.ModelAdmin):
-    list_display = ['id','title', 'content', 'created_at', 'updated_at']
+    list_display = ['id','title', 'content', 'created_at', 'updated_at', 'get_time_difference']
