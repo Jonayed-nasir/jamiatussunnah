@@ -60,6 +60,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
         # 'jamiatussunnah.onrender.com,'
+        'https://jamiatussunah.netlify.app',
         "http://localhost:3000",
         "http://localhost:8000",
         'http://127.0.0.1:8000',
