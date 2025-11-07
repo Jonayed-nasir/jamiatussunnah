@@ -13,8 +13,11 @@ class NoticePost(models.Model):
 
     @property
     def  get_time_difference(obj):
-        return f'{timesince(obj.created_at)} ago'
-
+        # now = timezone.now()
+        # diff = timesince(obj, now)
+        # return f'{timesince(obj.created_at)} ago'
+        diff = timesince(obj.created_at).split(',')[0]
+        return f'{diff} ago'
 
     def __str__(self):
         return self.title
