@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-+*)(6_ydf#*cgi2v)@!ne#r+mi%^_6p^+sw6ns^)d_$3!*nkk8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['jamiatussunnah.onrender.com', '127.0.0.1', 'https://jamiatussunnah-y7ws.onrender.com']
+ALLOWED_HOSTS = ['jamiatussunnah.onrender.com', 'https://jamiatussunnah-y7ws.onrender.com', '127.0.0.1']
 CSRF_TRUSTED_ORIGINS = ['https://jamiatussunnah.onrender.com', 'https://jamiatussunnah-y7ws.onrender.com']
 
 
@@ -61,7 +61,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
         # 'jamiatussunnah.onrender.com,'
         'https://jamiatussunnah.netlify.app',
-        'https://jamiatussunnah-y7ws.onrender.com',
+        # 'https://jamiatussunnah-y7ws.onrender.com',
         "http://localhost:3000",
         "http://localhost:8000",
         'http://127.0.0.1:8000',
