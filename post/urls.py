@@ -8,7 +8,7 @@ router = DefaultRouter()
 
 urlpatterns = [
 
-    path('api/', NoticePostView.as_view(), name='notice-posts'),
+       path('api/<int:pk>/', NoticePostView.as_view(), name='notice-detail'),
     path('api/befaq_result', BefaqResultDetailsView.as_view(), name='befaq_result')
 
 ]
