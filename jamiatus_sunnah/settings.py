@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'post',
     'corsheaders',
+    'admission',
+    'phonenumber_field',
 
 ]
 
@@ -60,7 +62,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
         # 'jamiatussunnah.onrender.com,'
-        'https://jamiatussunnah.netlify.app',
+        'https://jamiatussunah.netlify.app',
         # 'https://jamiatussunnah-y7ws.onrender.com',
         "http://localhost:3000",
         "http://localhost:8000",
@@ -142,3 +144,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+PHONENUMBER_DEFAULT_REGION = 'BD' 
