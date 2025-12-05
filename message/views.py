@@ -13,7 +13,7 @@ class MessageView(APIView):
             queryset = Message.objects.filter(sender_id=guest_id) | Message.objects.filter(sender=None)
         else:
             queryset = Message.objects.all().order_by('-created_at')
-        queryset = queryset.order_by('-created_at')
+        queryset = queryset.order_by('created_at')
         serializer = MessageSerializer(queryset, many=True)
         return Response(serializer.data)
    
