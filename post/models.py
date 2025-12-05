@@ -8,7 +8,7 @@ from django.db.models import Sum
 class NoticePost(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
-    iamge = models.ImageField(null=True)
+    iamge = models.ImageField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
