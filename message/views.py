@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Message
-from .serializers import MessageSerializer
+from .models import Message, GuestUser
+from .serializers import GuestUserSerializer, MessageSerializer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
@@ -23,3 +23,23 @@ class MessageView(APIView):
             
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+class GuestUserView(APIView):
+    def get_client_ip(self, request):
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[0]
+        else:
+            ip = request.META.get('REMOTE_ADDR')
+        return ip
+
+    def post(self, request):
+        ip_address = self.get_client_ip(request)
+        name = request.data.get('name', "").strip()
+        if not name:
+            return Response({"error": "Name is required."}, status=status.HTTP_400_BAD_REQUEST)
+        user, created = GuestUser.objects.get_or_create(ip_address=ip_address, defaults={'name': name})
+        if not created:
+            user.name = name
+            user.save()
+        serializer = GuestUserSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
