@@ -12,9 +12,14 @@ class MessageView(APIView):
         serializer = MessageSerializer(queryset, many=True)
         return Response(serializer.data)
     
+   
     def post(self, request):
+        # print(request.body)  # debug: ki asche body te
         serializer = MessageSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
+            print(serializer.data)  # debug: ki save holo
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+            
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
