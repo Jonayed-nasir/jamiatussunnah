@@ -6,9 +6,9 @@ class MessageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Message
-        fields = ['id', 'sender', 'sender_name', 'body', 'created_at']
+        fields = ['id', 'body', 'created_at', 'sender_name']
 
 class GuestUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = GuestUser
-        fields = ['id', 'name', 'ip_address', 'created_at']
+        fields = ['id', 'name', 'email', 'created_at']

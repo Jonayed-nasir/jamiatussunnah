@@ -24,22 +24,18 @@ class MessageView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class GuestUserView(APIView):
-    def get_client_ip(self, request):
-        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-        if x_forwarded_for:
-            ip = x_forwarded_for.split(',')[0]
-        else:
-            ip = request.META.get('REMOTE_ADDR')
-        return ip
-
     def post(self, request):
-        ip_address = self.get_client_ip(request)
-        name = request.data.get('name', "").strip()
+        name = request.data.get('name', '').strip()
+        email = request.data.get('email', '').strip()
+
         if not name:
-            return Response({"error": "Name is required."}, status=status.HTTP_400_BAD_REQUEST)
-        user, created = GuestUser.objects.get_or_create(ip_address=ip_address, defaults={'name': name})
+            return Response({'error': 'Name is required.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        if not email:
+            return Response({'error': 'Email is required.'}, status=status.HTTP_400_BAD_REQUEST)
+        guest_user, created = GuestUser.objects.get_or_create(email=email, defaults={'name': name})
         if not created:
-            user.name = name
-            user.save()
-        serializer = GuestUserSerializer(user)
+            guest_user.name = name
+            guest_user.save()
+        serializer = GuestUserSerializer(guest_user)
         return Response(serializer.data, status=status.HTTP_200_OK)
