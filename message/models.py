@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Message(models.Model):
-    sender = models.CharField(max_length=100)
+    sender = models.CharField(max_length=100, blank=True, null=True)
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
