@@ -11,7 +11,7 @@ from rest_framework.views import APIView
 
 class CategoryListView(APIView):
     def get(self, request):
-        queryset = Category.objects.all().filter(category=category).order_by('name')
+        queryset = Category.objects.all().order_by('name')
         serializer = CategorySerializer(queryset, many=True)
         return Response(serializer.data)
 class FatwaListView(APIView):
