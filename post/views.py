@@ -17,6 +17,12 @@ class NoticePostView(APIView):
         serializer = NoticePostSerializer(posts, many=True)
         return Response(serializer.data)
 
+class GetAllNoticePostsView(APIView):
+    def get(self, request):
+        queryset = NoticePost.objects.all().order_by('-updated_at', '-created_at')
+        serializer = NoticePostSerializer(queryset, many=True)
+        return Response(serializer.data)
+
 class NoticeDetailView(APIView):
     def get(self, request, pk):
         notice = get_object_or_404(NoticePost, pk=pk)
